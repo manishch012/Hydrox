@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\1.png" />
+    <None Include="wwwroot\Images\10.png" />
+    <None Include="wwwroot\Images\11.png" />
+    <None Include="wwwroot\Images\12.png" />
+    <None Include="wwwroot\Images\2.png" />
+    <None Include="wwwroot\Images\3.png" />
+    <None Include="wwwroot\Images\4.png" />
+    <None Include="wwwroot\Images\5.png" />
+    <None Include="wwwroot\Images\6.png" />
+    <None Include="wwwroot\Images\7.png" />
+    <None Include="wwwroot\Images\8.png" />
+    <None Include="wwwroot\Images\FacilityInPune.png" />
+    <None Include="wwwroot\Images\GlobalSpan.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="4.10.0" />
+    <PackageReference Include="MimeKit" Version="4.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Home\ContactUs.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

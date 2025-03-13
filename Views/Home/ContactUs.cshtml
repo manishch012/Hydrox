@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "Contact Us";
+}
+<header class="contact">
+    <h1>@ViewData["Title"]</h1>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</header>
+
+<section id="contact" class="container my-5">
+    <h2 class="text-center">Contact Us</h2>
+    <form id="contactForm" name="contactForm">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+    <p class="text-center mt-6"><strong>Email:</strong> info@hydrox.co.in | <strong>Phone:</strong> +91 9310811344 <strong><a class="nav-link" href="https://www.indiamart.com/hydroxaquatechinc/profile.html">India Mart</a></strong></p>
+    <script>
+        debugger;
+        document.getElementById("contactForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            let formData = new FormData(this);
+
+            let response = await fetch("/Home/send", {
+                method: "POST",
+                body: formData
+            });
+
+            let result = await response.json();
+            alert(result.message);
+        });
+    </script>
+</section>

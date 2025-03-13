@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Catalog";
+}
+<header class="catalog">
+    <h1>@ViewData["Title"]</h1>
+</header>
+<h2 class="text-center">Our Catalog</h2>
+<div class="gallery" id="gallery"></div>
+
+<script>
+    async function loadImages() {
+        const response = await fetch('/Home/GetImages'); // Call ASP.NET Core API endpoint
+        const images = await response.json();
+
+        let gallery = document.getElementById('gallery');
+        images.forEach(image => {
+            let imgElement = document.createElement('img');
+            imgElement.src = `/images/${image}`;
+            gallery.appendChild(imgElement);
+        });
+    }
+
+    loadImages();
+</script>
