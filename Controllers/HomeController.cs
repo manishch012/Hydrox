@@ -1,9 +1,8 @@
 using System.Diagnostics;
-//using System.Net.Mail;
 using Hydrox.Models;
 using Microsoft.AspNetCore.Mvc;
-using MimeKit;
-using MailKit.Net.Smtp;
+using System.Net.Mail;
+using System.Net;
 
 
 namespace Hydrox.Controllers
@@ -12,7 +11,7 @@ namespace Hydrox.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IWebHostEnvironment _env;
-        private readonly string _imagesPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images/catalog");
+        private readonly string _imagesPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images/catalog");
 
         public HomeController(ILogger<HomeController> logger, IWebHostEnvironment env)
         {
@@ -63,7 +62,7 @@ namespace Hydrox.Controllers
         [HttpGet]
         public IActionResult GetImages()
         {
-            string imagesPath = Path.Combine(_env.WebRootPath, "images/catalog");
+            string imagesPath = Path.Combine(_env.WebRootPath, "Images/catalog");
 
             if (!Directory.Exists(imagesPath))
             {
@@ -77,32 +76,39 @@ namespace Hydrox.Controllers
             return Ok(images);
         }
 
-        [HttpPost("send")]
-        public async Task<IActionResult> SendEmail([FromForm] ContactForm model)
+        [HttpPost]
+        public async Task<IActionResult> SendEmail([FromBody] ContactForm model)
         {
-            if (ModelState.IsValid)
+            if (string.IsNullOrWhiteSpace(model.Name) || string.IsNullOrWhiteSpace(model.Email) || string.IsNullOrWhiteSpace(model.Message))
             {
-                var emailMessage = new MimeMessage();
-                emailMessage.From.Add(new MailboxAddress("Your Website", "your-email@example.com"));
-                emailMessage.To.Add(new MailboxAddress("Admin", "admin@example.com"));
-                emailMessage.Subject = "New Contact Form Submission";
-                emailMessage.Body = new TextPart("plain")
-                {
-                    Text = $"Name: {model.Name}\nEmail: {model.Email}\nMessage:\n{model.Message}"
-                };
-
-                using (var client = new SmtpClient())
-                {
-                    await client.ConnectAsync("smtp.example.com", 587, false); // Use your SMTP server
-                    await client.AuthenticateAsync("your-email@example.com", "your-email-password");
-                    await client.SendAsync(emailMessage);
-                    await client.DisconnectAsync(true);
-                }
-
-                return Ok(new { message = "Email sent successfully!" });
+                return BadRequest(new { message = "All fields are required." });
             }
 
-            return BadRequest(ModelState);
+            try
+            {
+                var smtpClient = new SmtpClient("smtp.gmail.com")
+                {
+                    Port = 587,
+                    Credentials = new NetworkCredential("chaturvedimanish100780@gmail.com", "pxlerslrpbnxdjuw"), // Use App Password
+                    EnableSsl = true
+                };
+
+                var mailMessage = new MailMessage
+                {
+                    From = new MailAddress("chaturvedimanish100780@gmail.com"),
+                    Subject = "New Contact Form Submission",
+                    Body = $"Name: {model.Name}\nEmail: {model.Email}\n\nMessage:\n{model.Message}",
+                    IsBodyHtml = false
+                };
+                mailMessage.To.Add("info@hydrox.co.in"); // Receiver email
+
+                await smtpClient.SendMailAsync(mailMessage);
+                return Ok(new { message = "Message sent successfully!" });
+            }
+            catch (System.Exception ex)
+            {
+                return StatusCode(500, new { message = "Error sending message.", error = ex.Message });
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

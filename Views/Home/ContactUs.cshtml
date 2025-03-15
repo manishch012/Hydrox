@@ -43,26 +43,32 @@
 
 <section id="contact" class="container my-5">
     <h2 class="text-center">Contact Us</h2>
-    <form id="contactForm" name="contactForm">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <form id="contactForm">
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+        <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
         <button type="submit">Send Message</button>
     </form>
+    <div class="message" id="responseMessage"></div>
     <p class="text-center mt-6"><strong>Email:</strong> info@hydrox.co.in | <strong>Phone:</strong> +91 9310811344 </p>
     <script>
-        document.getElementById("contactForm").addEventListener("submit", async function (e) {
-            e.preventDefault();
+           document.getElementById("contactForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
 
-            let formData = new FormData(this);
+            const formData = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                message: document.getElementById("message").value
+            };
 
-            let response = await fetch("/Home/send", {
-                method: "POST",
-                body: formData
+            const response = await fetch('/Home/SendEmail', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
             });
 
-            let result = await response.json();
-            alert(result.message);
+            const result = await response.json();
+            document.getElementById("responseMessage").innerText = result.message;
         });
     </script>
 </section>
