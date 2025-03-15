@@ -11,11 +11,13 @@ namespace Hydrox.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IWebHostEnvironment _env;
         private readonly string _imagesPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images/catalog");
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IWebHostEnvironment env)
         {
             _logger = logger;
+            _env = env;
         }
 
         public IActionResult Index()
@@ -61,7 +63,9 @@ namespace Hydrox.Controllers
         [HttpGet]
         public IActionResult GetImages()
         {
-            if (!Directory.Exists(_imagesPath))
+            string imagesPath = Path.Combine(_env.WebRootPath, "images/catalog");
+
+            if (!Directory.Exists(imagesPath))
             {
                 return NotFound("Images folder not found.");
             }
