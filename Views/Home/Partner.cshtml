@@ -3,13 +3,33 @@
 }
 <header class="partner">
     <h1>@ViewData["Title"]</h1>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        img {
+            width: 200px; /* Adjust size as needed */
+            height: 50px;
+            margin-right: 10px;
+            object-fit: contain;
+        }
+    </style>
 </header>
 <section id="partners" class="container my-5">
     <h2 class="text-center">Technology Partners</h2>
     <ul>
-        <li><strong>Electrical:</strong> Eaton Power (USA)</li>
-        <li><strong>Chemical:</strong> Tobslak India (Germany)</li>
-        <li><strong>Acoustic:</strong> Aura Acoustic Systems</li>
-        <li><strong>Cladding:</strong> Forms + Surfaces (USA)</li>
+        <li><strong>Electrical:</strong> Eaton Power (USA) <img src="~/Images/logo/3.png" alt="Eaton Power (USA)"></li>
+        <li><strong>Paint and Chemical:</strong> Tobslak Germany <img src="~/Images/logo/2.png" alt="Tobslak Germany"></li>
+        <li><strong>Acoustic:</strong> Aura Group India <img src="~/Images/logo/4.png" alt="Aura Group India"></li>
+        <li><strong>Cladding:</strong> Forms + Surfaces (USA) <img src="~/Images/logo/1.png" alt="Forms + Surfaces (USA)"></li>
+        <li><strong>Heating System:</strong> Stiebel Eltron Germany <img src="~/Images/logo/5.png" alt="Stiebel Eltron Germany"></li>
     </ul>
 </section>

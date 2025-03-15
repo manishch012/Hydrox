@@ -3,6 +3,25 @@
 }
 <header class="client">
     <h1>@ViewData["Title"]</h1>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        img {
+            width: 200px; /* Adjust size as needed */
+            height: 50px;
+            margin-right: 10px;
+            object-fit: contain;
+        }
+    </style>
 </header>
 
 <section id="clients" class="container my-5">
@@ -10,26 +29,26 @@
 <div class="row">
     <div class="col-md-6">
         <ul>
-            <li>Tata Advance Systems Ltd</li>
-            <li>Zenviron Engineering Solutions</li>
-            <li>Amrita Hospitals</li>
-            <li>Itopia Infotech</li>
-            <li>Lohia Corp Ltd</li>
-            <li>Synergy Corporate Interiors Pvt Ltd</li>
-            <li>Brookfield Properties</li>
-            <li>Sysmec Automation</li>
+                <li>Tata Advance Systems Ltd <img src="~/Images/logo/Tata.png" alt="Tata Advance Systems Ltd"></li>
+                <li>Zenviron Engineering Solutions <img src="~/Images/logo/zenvirn.png" alt="Zenviron Engineering Solutions"></li>
+                <li>Amrita Hospitals <img src="~/Images/logo/Amrita.png" alt="Amrita Hospitals"></li>
+                <li>Itopia Infotech <img src="~/Images/logo/itopia.png" alt="Itopia Infotech"></li>
+                <li>Lohia Corp Ltd <img src="~/Images/logo/Lohia.png" alt="Lohia Corp Ltd"></li>
+                <li>Synergy Corporate Interiors Pvt Ltd <img src="~/Images/logo/synergy.png" alt="Synergy Corporate Interiors Pvt Ltd"></li>
+                <li>Brookfield Properties <img src="~/Images/logo/Brookfield.png" alt="Brookfield Properties"></li>
+                <li>Sysmec Automation <img src="~/Images/logo/sysmac.png" alt="Sysmec Automation"></li>
         </ul>
     </div>
     <div class="col-md-6">
         <ul>
-            <li>Lutron Technologies</li>
-            <li>Krisumi Corporation Pvt. Ltd.</li>
-            <li>Advance India Projects Ltd</li>
-            <li>Trident Ltd</li>
-            <li>Grande Castello Private Limited</li>
-            <li>Mahamaya Infrastructure Pvt Ltd</li>
-            <li>Hindustan Syringes and Medical Devices Limited</li>
-            <li>D S Group</li>
+                <li>Lutron Technologies <img src="~/Images/logo/Lutron.png" alt="Lutron Technologies"></li>
+                <li>Krisumi Corporation Pvt. Ltd. <img src="~/Images/logo/krisumi.png" alt="Krisumi Corporation Pvt. Ltd."></li>
+                <li>Advance India Projects Ltd <img src="~/Images/logo/AIPL.png" alt="Advance India Projects Ltd"></li>
+                <li>Trident Ltd <img src="~/Images/logo/trident.png" alt="Trident Ltd"></li>
+                <li>Grande Castello Private Limited <img src="~/Images/logo/grande.png" alt="Grande Castello Private Limited"></li>
+                <li>Mahamaya Infrastructure Pvt Ltd <img src="~/Images/logo/mahamaya.png" alt="Mahamaya Infrastructure Pvt Ltd"></li>
+                <li>Hindustan Syringes and Medical Devices Limited <img src="~/Images/logo/HMD.png" alt="Hindustan Syringes and Medical Devices Limited"></li>
+                <li>D S Group <img src="~/Images/logo/DS.png" alt="D S Group"></li>
         </ul>
     </div>
 </div>
