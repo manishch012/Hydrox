@@ -15,7 +15,8 @@
         let gallery = document.getElementById('gallery');
         images.forEach(image => {
             let imgElement = document.createElement('img');
-            imgElement.src = `/images/${image}`;
+            imgElement.src = `/Images/catalog/${image}`;
+			imgElement.alt = image;
             gallery.appendChild(imgElement);
         });
     }
