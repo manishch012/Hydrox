@@ -17,7 +17,7 @@
         }
 
         .catalog {
-            background: url('/Images/12.png') no-repeat center center;
+            background: url('/Images/catalogbanner.png') no-repeat center center;
             background-size: cover;
             color: white;
             text-align: center;
@@ -25,7 +25,7 @@
         }
 
         .client {
-            background: url('/Images/5.png') no-repeat center center;
+            background: url('/Images/clients.png') no-repeat center center;
             background-size: cover;
             color: white;
             text-align: center;
@@ -57,7 +57,7 @@
         }
 
         .services {
-            background: url('/Images/14.png') no-repeat center center;
+            background: url('/Images/ProductandServices.png') no-repeat center center;
             background-size: cover;
             color: white;
             text-align: center;
@@ -90,12 +90,19 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
+        img {
+            width: 50px; /* Adjust size as needed */
+            height: 50px;
+            margin-right: 10px;
+            object-fit: contain;
+        }
     </style>
 </head> 
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
+                <img src="~/Images/logo/Hydrox.jpeg" alt="Hydrox">
                 <a class="navbar-brand" href="#">Hydrox Aquatech Inc</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
@@ -106,16 +113,16 @@
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Services">Services</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Services">Product and Services</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Catalog">Catalog</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Client">Clients</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Partner">Technology Partners</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Partner">Technology Partners</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Client">Clients</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="ContactUs">Contact Us</a>

@@ -2,24 +2,18 @@
     ViewData["Title"] = "Catalog";
 }
 <header class="catalog">
-    <h1>@ViewData["Title"]</h1>
 </header>
-<h2 class="text-center">Our Catalog</h2>
-<div class="gallery" id="gallery"></div>
 
-<script>
-    async function loadImages() {
-        const response = await fetch('/Home/GetImages'); // Call ASP.NET Core API endpoint
-        const images = await response.json();
+<section id="why-us" class="container my-5">
+    <h2 class="text-center">View Catalog</h2>
+    <ul>
+        <li><strong><a href="~/pdf/HydroxDoorPatterns.pdf" target="_blank">Door Patterns</a></strong></li>
+        <li><strong><a href="~/pdf/HydroxElectrical.pdf" target="_blank">Electricals</a></strong></li>
+        <li><strong><a href="~/pdf/HydroxLiftInteriors.pdf" target="_blank">Lift Interiors</a></strong></li>
+        <li><strong><a href="~/pdf/HydroxPaint&Chemical.pdf" target="_blank">Paint and Chemicals</a></strong></li>
+        <li><strong><a href="~/pdf/HydroxWaterproofing.pdf" target="_blank">Water Proofing</a></strong></li>
+        <li><strong><a href="~/pdf/HydroxWoodCatalogue.pdf" target="_blank">Wood Catalogues</a></strong></li>
+    </ul>
+</section>
 
-        let gallery = document.getElementById('gallery');
-        images.forEach(image => {
-            let imgElement = document.createElement('img');
-            imgElement.src = `/Images/catalog/${image}`;
-			imgElement.alt = image;
-            gallery.appendChild(imgElement);
-        });
-    }
 
-    loadImages();
-</script>
