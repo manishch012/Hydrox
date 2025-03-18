@@ -10,7 +10,7 @@
     <style>
         .hero {
             background: url('/Images/13.png') no-repeat center center;
-            background-size: cover;
+            background-size: inherit;
             color: white;
             text-align: center;
             padding: 100px 20px;
@@ -102,7 +102,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <img src="~/Images/logo/Hydrox.jpeg" alt="Hydrox">
+                <img src="~/Images/logo/Hydrox.png" alt="Hydrox">
                 <a class="navbar-brand" href="#">Hydrox Aquatech Inc</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
@@ -113,11 +113,11 @@
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Services">Product and Services</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Services">Products and Services</a>
                         </li>
-                        <li class="nav-item">
+                      @*   <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Catalog">Catalog</a>
-                        </li>
+                        </li> *@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Partner">Technology Partners</a>
                         </li>
