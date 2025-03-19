@@ -24,6 +24,16 @@
         .pagination .page-link {
             color: #0dcaf0; /* Use the same color as the active state */
         }
+
+        .btn-grey {
+            background-color: #E3E3E3 !important;
+            color: #000; /* Ensure text is visible */
+            border: 1px solid #ccc; /* Optional: Add a border */
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            text-align: center;
+        }
     </style>
 </header>
 <section id="why-us" class="container my-5">
@@ -31,7 +41,7 @@
     <div class="text-center mb-4">
         @foreach (var category in ViewBag.Categories)
         {
-            <a href="@Url.Action("Index", "Gallery", new { category = category })" class="btn btn-primary m-1">@category</a>
+            <a href="@Url.Action("Index", "Gallery", new { category = category })" class="btn btn-grey m-1">@category</a>
         }
     </div>
 
