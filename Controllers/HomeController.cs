@@ -100,8 +100,8 @@ namespace Hydrox.Controllers
                     Body = $"Name: {model.Name}\nEmail: {model.Email}\n\nMessage:\n{model.Message}",
                     IsBodyHtml = false
                 };
-                mailMessage.To.Add("manishch01@gmail.com"); // Receiver email
-                //mailMessage.To.Add("info@hydrox.co.in"); // Receiver email
+                //mailMessage.To.Add("manishch01@gmail.com"); // Receiver email
+                mailMessage.To.Add("info@hydrox.co.in"); // Receiver email
 
                 await smtpClient.SendMailAsync(mailMessage);
                 return Ok(new { message = "Message sent successfully!" });
