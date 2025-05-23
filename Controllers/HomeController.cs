@@ -7,6 +7,9 @@ using System.Net;
 
 namespace Hydrox.Controllers
 {
+    /// <summary>
+    /// Home Controller for handling requests related to the home page and other static pages.
+    /// </summary>
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
