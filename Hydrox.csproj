@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>7ecab6f7-06cc-4044-9f2e-2e4cb395d272</UserSecretsId>
+    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <DockerfileContext>.</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\1.png" />
+    <None Include="wwwroot\Images\10.png" />
+    <None Include="wwwroot\Images\11.png" />
+    <None Include="wwwroot\Images\12.png" />
+    <None Include="wwwroot\Images\2.png" />
+    <None Include="wwwroot\Images\3.png" />
+    <None Include="wwwroot\Images\4.png" />
+    <None Include="wwwroot\Images\5.png" />
+    <None Include="wwwroot\Images\6.png" />
+    <None Include="wwwroot\Images\7.png" />
+    <None Include="wwwroot\Images\8.png" />
+    <None Include="wwwroot\Images\FacilityInPune.png" />
+    <None Include="wwwroot\Images\GlobalSpan.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+    <PackageReference Include="SendGrid" Version="9.29.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Home\ContactUs.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

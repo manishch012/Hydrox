@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Technology Partners";
+}
+<title>ViewData["Title"]</title>
+<meta name="Partners" content="This will use for hydrox partners">
+<header class="partner">
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            justify-content: center;
+        }
+
+        #partners img {
+            width: 200px; /* Adjust size as needed */
+            height: 50px;
+            margin-right: 10px;
+            object-fit: contain;
+        }
+    </style>
+</header>
+<section id="partners" class="container my-5">
+    <h2 class="text-center">Technology Partners</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <ul>
+                <li><img src="~/Images/logo/3.png" alt="Eaton Power (USA)"></li>
+                <li><img src="~/Images/logo/1.png" alt="Forms + Surfaces (USA)"></li>
+
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <ul>
+                <li><img src="~/Images/logo/2.png" alt="Tobslak Germany"></li>
+                <li><img src="~/Images/logo/4.png" alt="Aura Group India"></li>
+
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <ul>
+                <li><img src="~/Images/logo/5.png" alt="Stiebel Eltron Germany"></li>
+            </ul>
+        </div>
+    </div>
+</section>

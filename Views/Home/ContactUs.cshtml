@@ -1,0 +1,133 @@
+﻿@{
+	ViewData["Title"] = "Contact Us";
+}
+<title>@ViewData["Title"]</title>
+<meta name="ContactUs" content="This will use for hydrox contact details">
+<header class="contact">
+	<style>
+
+		form {
+			max-width: 400px;
+			margin: auto;
+			padding: 20px;
+			border: 1px solid #ddd;
+			border-radius: 8px;
+			text-align: center;
+		}
+
+		input, textarea {
+			width: 100%;
+			padding: 10px;
+			margin: 10px 0;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+
+		button {
+			background-color: #007BFF;
+			color: white;
+			padding: 10px 15px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+			button:hover {
+				background-color: #0056b3;
+			}
+
+		.spinner {
+			border: 4px solid #f3f3f3;
+			border-top: 4px solid #007BFF;
+			border-radius: 50%;
+			width: 30px;
+			height: 30px;
+			animation: spin 1s linear infinite;
+			margin: 10px auto;
+		}
+
+		@@keyframes spin {
+			0% {
+				transform: rotate(0deg);
+			}
+
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+	</style>
+</header>
+
+<section id="contact" class="container my-5">
+	<h2 class="text-center">Contact Us</h2>
+	<form id="contactForm">
+		<input type="text" id="name" name="name" placeholder="Your Name" required>
+		<input type="email" id="email" name="email" placeholder="Your Email" required>
+		<textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+		<button id="sendBtn" type="submit">Send Message</button>
+		<!-- ✅ Loader -->
+		<div id="loader" style="display:none; margin-top:10px;">
+			<div class="spinner"></div>
+			<p>Sending message...</p>
+		</div>
+		<div class="message" id="responseMessage"></div>
+		<div class="message" id="responseMessageEx"></div>
+
+	</form>
+	<p class="text-center mt-6"><strong>Email:</strong> info@hydrox.co.in | <strong>Phone:</strong> +91 9310811344, +91 9818930239 </p>
+	<script>
+		document.getElementById("contactForm").addEventListener("submit", async function(event) {
+			event.preventDefault();
+
+			const loader = document.getElementById("loader");
+			const btn = document.getElementById("sendBtn");
+			const responseMsg = document.getElementById("responseMessage");
+			const responseMsgEx = document.getElementById("responseMessageEx");
+
+
+			// ✅ Show loader + disable button
+			loader.style.display = "block";
+			btn.disabled = true;
+			responseMsg.innerText = "";
+
+			const formData = {
+				name: document.getElementById("name").value,
+				email: document.getElementById("email").value,
+				message: document.getElementById("message").value
+			};
+
+		 try {
+			const response = await fetch('/Home/SendEmail', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(formData)
+			});
+
+			const result = await response.json();
+
+			if (!response.ok) {
+				// ❗ Handle server error properly
+				responseMsg.style.color = "red";
+				responseMsg.innerText = result.message || "Error sending message.";
+				responseMsgEx.innerText = result.error || "";
+				return;
+			}
+
+			// ✅ Success case
+			responseMsg.style.color = "green";
+			responseMsg.innerText = result.message;
+			responseMsgEx.innerText = "";
+
+		} catch (error) {
+			// ❗ Network / JS error
+			responseMsg.style.color = "red";
+			responseMsg.innerText = "Error sending message.";
+			responseMsgEx.innerText = error.message;
+		}
+		finally {
+			loader.style.display = "none";
+			btn.disabled = false;
+		}
+		});
+	</script>
+</section>
