@@ -131,7 +131,12 @@ namespace Hydrox.Controllers
 
             try
             {
-                var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
+                var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY")?.Trim();
+                if (string.IsNullOrWhiteSpace(apiKey))
+                {
+                    throw new Exception("SendGrid API key missing or invalid");
+                }
+
                 var client = new SendGridClient(apiKey);
 
                 var from = new EmailAddress("chaturvedimanish100780@gmail.com", "Hydrox Website");
