@@ -140,7 +140,7 @@ namespace Hydrox.Controllers
                 var client = new SendGridClient(apiKey);
 
                 var from = new EmailAddress("chaturvedimanish100780@gmail.com", "Hydrox Website");
-                var to = new EmailAddress("chaturvedimanish100780@gmail.com");
+                var to = new EmailAddress("manish_ch01@yahoo.co.in");
 
                 var subject = "New Contact Form Submission for Hydrox";
 
